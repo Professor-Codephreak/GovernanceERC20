@@ -4,7 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "yarn prettier ./test/*.ts --check",
+    "lint:fix": "yarn prettier ./test/*.ts --write",
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "npx hardhat compile",
+    "pretest": "yarn compile",
+    "test": "npx hardhat test"
   },
   "repository": {
     "type": "git",
@@ -19,5 +25,8 @@
   "homepage": "https://github.com/TokenWalk/GovernanceERC20#readme",
   "devDependencies": {
     "hardhat": "^2.3.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.0.0"
   }
 }
